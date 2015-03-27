@@ -1,0 +1,1 @@
+var swtchsite = angular.module("swtchsite", []);

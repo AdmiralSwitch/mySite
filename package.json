@@ -1,7 +1,6 @@
 {
   "name": "mySite",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.0",
   "main": "web-server.js",
   "scripts": {
     "start": "node web-server.js"

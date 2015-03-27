@@ -1,4 +1,4 @@
-web-server.js#!/usr/bin/env node
+#!/usr/bin/env node
 
 var util = require('util'),
     http = require('http'),
@@ -6,7 +6,7 @@ var util = require('util'),
     url = require('url'),
     events = require('events');
 
-var DEFAULT_PORT = 3000;
+var DEFAULT_PORT = 8000;
 
 function main(argv) {
   new HttpServer({
@@ -87,12 +87,12 @@ StaticServlet.MimeMap = {
 
 StaticServlet.prototype.handleRequest = function(req, res) {
   var self = this;
-  var path = ('./site' + req.url.pathname).replace('//','/').replace(/%(..)/g, function(match, hex){
+  var path = ('./app' + req.url.pathname).replace('//','/').replace(/%(..)/g, function(match, hex){
     return String.fromCharCode(parseInt(hex, 16));
   });
   var parts = path.split('/');
   if (parts[parts.length-1] === '' ){
-    return self.sendFile_(req, res, './site/index.html');
+    return self.sendFile_(req, res, './app/index.html');
   }
   if (parts[parts.length-1].charAt(0) === '.')
     return self.sendForbidden_(req, res, path);
